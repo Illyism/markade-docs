@@ -1,3 +1,10 @@
-<!DOCTYPE html><html><head><title>Second Markade Page</title><link rel="stylesheet" href="css/style.css" type="text/css"></head><body><div class="container"><h1>Second Markade Page</h1><p>You successfully changed templates for your second <a href="http://markade.il.ly">Markade</a> page!</p>
+<!DOCTYPE html><html><head><title>Second Markade Page</title><link rel="stylesheet" href="/css/style.css" type="text/css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item">Markade</a><a href="/docs/" class="item">Documentation</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Second Markade Page</h1></div></div></div><div class="container"><div class="contain"><p>You successfully changed templates for your second <a href="http://markade.il.ly">Markade</a> page!</p>
 <p>And check the <a href="index.html">first</a> page</p>
-</div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script></body></html>
+</div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script><script>$(document).ready(function() {
+  $('pre code').each(function(i, block) {
+    block.className = block.className.replace("lang-", "");
+    hljs.highlightBlock(block);
+  });
+});
+
+</script></body></html>

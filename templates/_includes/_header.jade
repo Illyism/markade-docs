@@ -1,0 +1,14 @@
+.menu
+  .contain
+    a.logo.item(href="/") Markade
+    +menuItem("/about/", "about", "About")
+    +menuItem("/docs/", "docs/index", "Documentation")
+    +menuItem("/examples/", "examples", "Examples")
+    a.item(href="http://github.com/illyism/markade") Github
+
+if ($.title)
+  .text
+    .contain
+      h1.title #{$.title}
+      if ($.description)
+        p.description #{$.description}

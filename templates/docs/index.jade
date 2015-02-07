@@ -1,0 +1,14 @@
+extend ../_includes/_layout
+
+block content
+  .contain
+    .main
+      if (html)
+        | !{html}
+    .sidebar
+      .menu.vertical
+        +menuItem("/docs/", "docs/index", "Welcome")
+        +menuItem("/docs/quickstart.html", "docs/quickstart", "Quickstart")
+        +menuItem("/docs/markdown.html", "docs/markdown", "Markdown")
+        +menuItem("/docs/jade.html", "docs/jade", "Jade")
+        +menuItem("/docs/yaml.html", "docs/yaml", "YAML")

@@ -1,0 +1,21 @@
+mixin terminal(title, shell, html)
+  .terminal
+    .title
+      span.btn.b1 ✖
+      span.btn.b2 ➖
+      span.btn.b3 ❏
+      span.text #{title}
+    if (shell)
+      .shell
+        for line in shell
+          p.line
+            span.dir #{line.dir} 
+            span.prompt $ 
+            span.cmd #{line.cmd}
+    else
+      pre.shell
+        code
+          | !{html}
+
+mixin menuItem(url, page, title)
+  a.item(href=url, class=($.page == page?"active":"")) #{title}

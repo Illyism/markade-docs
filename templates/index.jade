@@ -1,10 +1,31 @@
-doctype html
-html
-  head
-    title #{$.title}
-    link(rel="stylesheet", href="css/style.css", type="text/css")
-  body
-    .container
-      h1 #{$.title}
-      != html
-    script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
+extend _includes/_layout
+
+block header
+  .version
+    .contain.menu.center
+      .item
+        | Current Release: 
+        | #{$.version} 
+      a.item(href="https://github.com/illyism/markade") Fork on Github
+ 
+
+block content
+  .blocks
+    .contain
+      for block in $.headerBlocks
+        .block
+          .title #{block.title}
+          .description #{block.description}
+          a(href=block.link.url) #{block.link.title}
+  hr
+  .contain
+    +terminal("Quick-start Instructions", $.shell)
+  hr
+  .contain
+    +terminal("Initializing a Markade directory", null, blocks.init.html)
+  hr
+  .contain
+    +terminal("Compiling a Markade directory", null, blocks.compile.html)
+  hr
+  .contain
+    +terminal("Watching a Markade directory, and launching a server", null, blocks.watch.html)

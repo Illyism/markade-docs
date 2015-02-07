@@ -1,0 +1,19 @@
+doctype html
+html
+  include _mixin
+  head
+    title #{$.title}
+    link(rel="stylesheet", href="/css/style.css", type="text/css")
+    block style
+  body
+    .header
+      include _header
+      block header
+
+    .container
+      block content
+
+    .footer
+      include _footer
+    script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
+    block script

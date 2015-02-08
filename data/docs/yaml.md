@@ -1,6 +1,6 @@
 ---
 template: docs/index.jade
 page: docs/yaml
-title: Learn YAML
+title: Data by YAML
 ---
 

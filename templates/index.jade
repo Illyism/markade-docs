@@ -1,13 +1,7 @@
 extend _includes/_layout
 
 block header
-  .version
-    .contain.menu.center
-      .item
-        | Current Release: 
-        | #{$.version} 
-      a.item(href="https://github.com/illyism/markade") Fork on Github
- 
+  include _includes/_version 
 
 block content
   .blocks

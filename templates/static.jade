@@ -1,5 +1,11 @@
 extend _includes/_layout
 
+block head
+  - var body = {class: "inverted small"};
+
+block header
+  include _includes/_version
+
 block content
   .contain
     if (html)

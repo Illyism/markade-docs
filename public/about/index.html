@@ -1,14 +1,50 @@
-<!DOCTYPE html><html><head lang="en"><title>About Markade</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="keywords" content="static,site,generator,html,markdown, jade, yaml"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="description" content="A static site generator that stands on the shoulders of giants."><link rel="stylesheet" href="/css/style.css" type="text/css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item">Markade</a><a href="/about/" class="item active">About</a><a href="/docs/" class="item">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">About Markade</h1><p class="description">Why and How Markade works</p></div></div></div><div class="container"><div class="contain"><h2 id="lorem-ipsum">Lorem Ipsum</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<!DOCTYPE html><html><head lang="en"><title>The why, how and who of Markade.</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="keywords" content="static,site,generator,html,markdown, jade, yaml"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="description" content="A static site generator that stands on the shoulders of giants."><link rel="stylesheet" href="/css/style.css" type="text/css"></head><body class="inverted small"><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item">Markade</a><a href="/about/" class="item active">About</a><a href="/docs/" class="item">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">The why, how and who of Markade.</h1></div></div><div class="version"><div class="contain menu center"><div class="item">Current Release: 
+0.0.8</div><a href="https://github.com/illyism/markade" class="item">Fork on Github</a></div></div></div><div class="container"><div class="contain"><h2 id="why-use-markade-">Why use Markade?</h2>
+<p>Markade is a set of tools, neatly packaged together to enable
+ease-of-use for the lucky user who stumbled upon this static site generator.</p>
+<p>Like, many other static site generators, it is meant to compile your files
+without having the need to render them each time a request is sent to the
+server. This improves performance, as the server can just read a file and send
+it immediately to the browser.</p>
+<p>All the files are cached on their own without having to spend work on setting
+it up. Just like any other static file.</p>
+<p>Having static files also means you can upload them on Github as your <code>gh-pages</code>
+or to include them in your zip file whenever an user downloads your app.</p>
+<hr>
+<h2 id="what-makes-markade-special-">What makes Markade special?</h2>
+<p>There are a ton of different static site generators and most of them are
+very good indeed! But I felt it was not necessary to create my own templating
+engine when so many others are available to re-use without
+having to spend time reinventing the wheel.</p>
+<p>We are using <strong>Markdown</strong> for our content. This is a well-known and tested
+text-to-HTML language and tool that can be used even by non-tech-savvy users.</p>
+<p>Yet, Markdown does not support all the good things that are possible to use in
+a programming language or a template; no arrays, objects, booleans, numbers!</p>
+<p>To fill this gap, markade uses <strong>YAML</strong> - this is a data definition language.
+It can handle a lot of different variants of data and is used by many talented
+programmers and is supported by tons of different programming languages.</p>
+<p>An addition that Markade makes on top of this is the combination of both 
+YAML and Markdown in one file. That, and the seperation of specific Markdown
+blocks to an object that holds them all seperately.</p>
+<p>And to bring it all together, Markade uses <strong>Jade</strong>; an elegant way to write
+HTML in a very easy and clean way. It has a lot of advanced features like 
+template inheritance, includes, mixins and much more!</p>
+<hr>
+<h2 id="why-did-you-make-markade-">Why did you make Markade?</h2>
+<p>I was working on a <a href="http://avalon-rpg.com/">website</a> for a client at the time and one of the specs was
+to make the content editable easily by non-tech-aware editors. The content had
+to be stored locally as a file as well.</p>
+<p>So looking around, and being already familiar with both Markdown and Jade I
+came upon an implementation of Markdown that combined YAML with the seperation
+of both by two <code>---</code> lines.</p>
+<p>That was exactly what I needed and in time I came to find a single limitation
+on that approach. I wanted to re-use markdown code in different parts of the
+template. The was I saw that was possible is by using a <code>@ &lt;key&gt;</code> and <code>@ end</code>
+tags to denote the section the markdown code belonged to.</p>
+<p>This worked for me and thus Markade was born. It is not special,
+beautifully written code like Jekyll for example. But it lives on the work
+of other amazing work.</p>
+<p>In the end, I saw the need for a static generator when I wanted to cook up
+a little, simple website and I thought to port my work that I was doing for
+<a href="http://avalon-rpg.com/">Avalon</a> and seperate out the module.</p>
 </div></div><div class="footer"><div class="contain"><div class="left"><div>Markade ©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script></body></html>

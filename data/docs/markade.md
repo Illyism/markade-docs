@@ -1,6 +1,6 @@
 ---
 template: docs/index.jade
-page: docs/tool
+page: docs/markade
 title: Markade
 description: Markade - The tool in three commands.
 ---

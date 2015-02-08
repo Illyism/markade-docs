@@ -1,6 +1,6 @@
 ---
 page: index
-version: 0.0.5
+version: 0.0.8
 
 title: A static site generator that stands on the shoulders of giants.
 

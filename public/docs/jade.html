@@ -1,1 +1,249 @@
-<!DOCTYPE html><html><head><title>Learn Jade</title><link rel="stylesheet" href="/css/style.css" type="text/css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item">Markade</a><a href="/about/" class="item">About</a><a href="/docs/" class="item">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Learn Jade</h1></div></div></div><div class="container"><div class="contain"><div class="main"></div><div class="sidebar"><div class="menu vertical"><a href="/docs/" class="item">Welcome</a><a href="/docs/quickstart.html" class="item">Quickstart</a><a href="/docs/markdown.html" class="item">Markdown</a><a href="/docs/jade.html" class="item active">Jade</a><a href="/docs/yaml.html" class="item">YAML</a></div></div></div></div><div class="footer"><div class="contain"><div class="left"><div>Markade ©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script></body></html>
+<!DOCTYPE html><html><head><title>Learn Jade</title><link rel="stylesheet" href="/css/style.css" type="text/css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item">Markade</a><a href="/about/" class="item">About</a><a href="/docs/" class="item">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Learn Jade</h1></div></div></div><div class="container"><div class="contain"><div class="main"><h2 id="overview">Overview</h2>
+<p>Jade is a templating engine built for Node.js - It is not the fastest out there
+but one that is very fun to write and very compact and extendable.</p>
+<p>Here is a sample hello world page in Jade:</p>
+<pre><code class="lang-jade">  doctype html
+  html
+    head
+      title title name
+    body
+      header
+        h1#title Hello World
+      .container
+        p(style=&quot;margin-top: 50px;&quot;) Lorem ipsum
+</code></pre>
+<p>In jade, comments start with a <code>//</code> or <code>//-</code> for unbuffered code.
+And javascript starts with a <code>-</code>, you can execute javascript in these blocks.</p>
+<pre><code class="lang-jade">// this is a comment
+//- will not output within markup
+
+- var hello = &quot;world&quot;; console.log(hello);
+</code></pre>
+<hr>
+<h2 id="tags-and-content">Tags and Content</h2>
+<p>The first word in a line is your HTML tag. Anything that starts with a period
+is a class. Anything that starts with a hash symbol <code>#</code> is an id.</p>
+<p>Jade knows when tags are self-closing, like in the next example with img.
+If no tag is specified, it just uses divs.</p>
+<div class='terminal group'>
+<div class="title">Tags, ID and Classes</div>
+<pre class="jade shell">
+<code>span.button.orange#alertBtn.primary</code>
+<code>&lt;span id=&quot;alertBtn&quot; class=&quot;button orange primary&quot;&gt;&lt;/span&gt;</code>
+</pre></div>
+
+<p>To add text, type it after the element seperated by a space.
+You can also use pipes <code>|</code> to add a newline for larger blocks of text
+or whenever you want to seperate two elements with a space or text content.</p>
+<p>To add an element on the same line without intending, add a semi-colon <code>:</code> before
+the new element.</p>
+<div class='terminal group'>
+<div class="title">Content</div>
+<pre class="jade shell">
+<code>p I&#39;m a paragraph</code>
+<code>&lt;p&gt;I&#39;m a paragraph&lt;/p&gt;</code>
+</pre><pre class="jade shell">
+<code>p
+  | I&#39;m another paragraph with a 
+  a(href=&quot;#&quot;) link
+  |  inside.</code>
+<code>&lt;p&gt;I&#39;m another paragraph with a &lt;a href=&quot;#&quot;&gt;link&lt;/a&gt; inside.&lt;/p&gt;</code>
+</pre><pre class="jade shell">
+<code>.box
+  .box
+    .box: .box</code>
+<code>&lt;div class=&quot;box&quot;&gt;
+  &lt;div class=&quot;box&quot;&gt;
+    &lt;div class=&quot;box&quot;&gt;
+      &lt;div class=&quot;box&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code>
+</pre>
+</div>
+
+<h3 id="interpolation">Interpolation</h3>
+<p>You can interpolate content, escaped, unescaped.</p>
+<div class='terminal group'>
+<div class="title">Escaped Interpolation</div><pre class="jade shell">
+<code>- var myself = &quot;Jack&quot;;
+- var brother = &quot;John&quot;;
+- var sister = &quot;Jane&quot;;
+h1= myself
+p Siblings: #{brother} and #{sister}</code>
+<code>&lt;h1&gt;Jack&lt;/h1&gt;
+&lt;p&gt;Siblings: John and Jane&lt;/p&gt;</code>
+</pre></div>
+
+<p><code>myself</code> follows the basic pattern for evaluating a template local, but the code in between <code>#{</code> and <code>}</code> is evaluated, escaped, and the result buffered into the output of the template being rendered.</p>
+<p>This can be any valid Javascript expression, so you can do whatever feels good.</p>
+<div class='terminal group'>
+<div class="title">Escaped Interpolation</div><pre class="jade shell">
+<code>- var tags = [&quot;this&quot;, &quot;is&quot;, &quot;sparta&quot;];
+p #{tags.join(&quot;... &quot;).toUpperCase()}!!!</code>
+<code>&lt;p&gt;THIS... IS... SPARTA!!!&lt;/p&gt;</code>
+</pre></div>
+
+<p>You can embed HTML through interpolation as well, but you have to make sure it is safe.
+In the context of static content, this usually will be.</p>
+<div class='terminal group'>
+<div class="title">Unescaped Interpolation</div><pre class="jade shell">
+<code>- var sum = &quot;&lt;b&gt;&quot;+(4+2)+&quot;&lt;/b&gt;&quot;
+.sum 4 + 2 = !{sum}</code>
+<code>&lt;div class=&quot;sum&quot;&gt;4 + 2 = &lt;b&gt;6&lt;/b&gt;&lt;/div&gt;</code>
+</pre></div>
+
+<hr>
+<h2 id="attributes">Attributes</h2>
+<p>Elements can have attributes, these are added in parentheses and seperated by commas.</p>
+<p>If you don&#39;t put the value of the attribute in a string, then it tries to evaluate a
+javascript expression.</p>
+<div class='terminal group'>
+<div class="title">Attributes</div><pre class="jade shell">
+<code>a(href=&quot;/&quot;) Home
+a.button(href=&quot;#Away&quot;, class=&quot;btn&quot;) Onwards</code>
+<code>&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;#Away&quot; class=&quot;button btn&quot;&gt;Onwards&lt;/a&gt;</code>
+</pre></div>
+
+<p>The class attribute can be a string or an object mapping the value to a boolean.</p>
+<div class='terminal group vertical'>
+<div class="title">Expressions</div><pre class="jade shell">
+<code>- var err = {type: &quot;warning&quot;, msg: &quot;You died&quot;}
+- var err2 = {type: &quot;error&quot;, msg: &quot;Something went wrong&quot;}
+.notice(class=err.type == &quot;error&quot; ? &#39;big red&#39; : &#39;default&#39;) #{err.msg}
+.notice(class=err2.type == &quot;error&quot; ? &#39;big red&#39; : &#39;default&#39;) #{err2.msg)</code>
+<code>&lt;div class=&quot;notice default&quot;&gt;You died&lt;/div&gt;
+&lt;div class=&quot;notice big red&quot;&gt;Something went wrong&lt;/div&gt;</code>
+</pre><pre class="jade shell">
+<code>- var $ = {}; $.page = &#39;/docs&#39;
+
+a.item(class={active: $.page === &quot;/docs&quot;}) Docs
+a.item(class={active: $.page === &quot;/about&quot;}) About</code>
+<code>&lt;a class=&quot;item active&quot;&gt;Docs&lt;/a&gt;
+&lt;a class=&quot;item&quot;&gt;About&lt;/a&gt;</code>
+</pre></div>
+
+
+
+<hr>
+<h2 id="control">Control</h2>
+<p>As expected in a rendering engine there are control structures that you can use.</p>
+<div class='terminal group'>
+<div class="title">The <strong>if / else if / else</strong> control</div><pre class="jade shell">
+<code>if &quot;pigs&quot; == &quot;fly&quot;
+  p Magical world
+else if &quot;pigs&quot; == &quot;cats&quot;
+  p Impossible!
+else
+  p Just real life</code>
+<code>&lt;p&gt;Just real life&lt;/p&gt;</code>
+</pre></div>
+
+<div class='terminal group'>
+<div class="title">The <strong>for</strong> loop</div><pre class="jade shell">
+<code>- var animals = [&quot;cats&quot;, &quot;dogs&quot;, &quot;lions&quot;, &quot;bears&quot;]
+.animals
+  for animal in animals
+    span.animal #{animal}
+  each animal, i in animals
+    b(id=&quot;a&quot;+i) #{animal}</code>
+<code>&lt;div class=&quot;animals&quot;&gt;
+  &lt;span class=&quot;animal&quot;&gt;Cats&lt;/span&gt;
+  &lt;span class=&quot;animal&quot;&gt;dogs&lt;/span&gt;
+  &lt;span class=&quot;animal&quot;&gt;lions&lt;/span&gt;
+  &lt;span class=&quot;animal&quot;&gt;bears&lt;/span&gt;
+  &lt;b id=&quot;a0&quot;&gt;cats&lt;/b&gt;
+  &lt;b id=&quot;a1&quot;&gt;dogs&lt;/b&gt;
+  &lt;b id=&quot;a2&quot;&gt;lions&lt;/b&gt;
+  &lt;b id=&quot;a3&quot;&gt;bears&lt;/b&gt;
+&lt;/div&gt;</code>
+</pre></div>
+
+<hr>
+<h2 id="mixins">Mixins</h2>
+<p>In the pinnacle of DRY. You can use Mixins which are resuable blocks that you can call
+repeatedly again and again. They can accept arguments of any type like functions.</p>
+<div class='terminal group vertical'>
+<div class="title">Mixins</div><pre class="jade shell">
+<code>mixin menuItem(url, content, title)
+  a.item(href=url, title=title) #{content}
+
+.menu
+  +menuItem(&quot;/home&quot;, &quot;Home&quot;, &quot;Back to home&quot;)
+  +menuItem(&quot;/about&quot;, &quot;About Markade&quot;, &quot;Learn more about markade&quot;)</code>
+<code>&lt;div class=&quot;menu&quot;&gt;
+  &lt;a class=&quot;item&quot; title=&quot;Back to home&quot;&gt;Home&lt;/a&gt;
+  &lt;a class=&quot;item&quot; title=&quot;Learn more about markade&quot;&gt;About Markade&lt;/a&gt;
+&lt;/div&gt;</code>
+</pre></div>
+
+<hr>
+<h2 id="templates">Templates</h2>
+<p>Jade supports template inheritance via the <code>block</code> and <code>extends</code> keywords. A block is simply a &quot;block&quot; of Jade that may be replaced within a child template, this process is recursive.</p>
+<p>You can also append content instead of overwriting it. Do this with <code>block append</code> or <code>append</code> for short or <code>prepend</code> for the opposite.</p>
+<div class='terminal group vertical'>
+<div class="title">Block, Extends and Append</div><pre class="jade shell">
+<code>// _layout.jade
+h1 This is the layout
+block content
+
+// docs.jade
+extends _layout
+block content
+  p These are the docs
+
+// welcome.jade
+extends docs
+block append content
+  p This is more content</code>
+<code>&lt;h1&gt;This is the layout&lt;/h1&gt;
+&lt;p&gt;These are the docs&lt;/p&gt;
+&lt;p&gt;This is more content&lt;/p&gt;</code>
+</pre></div>
+
+<p>It is possible to <code>include</code> other jade files. Even a file with only mixins or blocks that won&#39;t immediately render.</p>
+<p>This is useful to use for a footer, header, sidebar setup for example.</p>
+<div class='terminal group vertical'>
+<div class="title">Include</div><pre class="jade shell">
+<code>// _menu.jade
+a(href=&quot;#1&quot;) Link
+a(href=&quot;#2&quot;) Link
+
+// docs.jade
+p A paragraph
+include _menu</code>
+<code>&lt;p&gt;A paragraph&lt;/p&gt;
+&lt;a href=&quot;#1&quot;&gt;Link&lt;/a&gt;
+&lt;a href=&quot;#2&quot;&gt;Link&lt;/a&gt;</code>
+</pre></div>
+
+<hr>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="http://jade-lang.com/reference/">Jade</a></li>
+</ul>
+</div><div id="sidebar" style="position: sticky;" class="sidebar"><div class="menu vertical"><a href="/docs/" class="item">Welcome</a><a href="/docs/quickstart.html" class="item">Quickstart</a><a href="/docs/markdown.html" class="item">Markdown</a><a href="/docs/jade.html" class="item active">Jade</a><a href="#overview" class="sub item">Overview</a><a href="#tags-and-content" class="sub item">Tags and Content</a><a href="#interpolation" class="sub item">Interpolation</a><a href="#control" class="sub item">Control</a><a href="#mixins" class="sub item">Mixins</a><a href="#templates" class="sub item">Templates</a><a href="#resources" class="sub item">Resources</a><a href="/docs/yaml.html" class="item">YAML</a></div></div></div></div><div class="footer"><div class="contain"><div class="left"><div>Markade ©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script><script>$(document).ready(function() {
+  $('.terminal.group .jade.shell').each(function(i, block) {
+    var first = block.children[0];
+    var second = block.children[1];
+    first.className = "jade";
+    second.className = "html";
+  });
+  $('pre code').each(function(i, block) {
+    block.className = block.className.replace("lang-", "");
+    hljs.highlightBlock(block);
+  });
+  
+  var menu = document.querySelector('.sidebar')
+  var menuPosition = menu.getBoundingClientRect().top;
+  window.onscroll = function() {
+      if (window.pageYOffset >= menuPosition) {
+          menu.style.position = 'fixed';
+          menu.style.top = '0px';
+      } else {
+          menu.style.position = 'static';
+          menu.style.top = '';
+      }
+  };
+});</script></body></html>

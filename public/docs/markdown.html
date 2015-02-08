@@ -1,1 +1,69 @@
-<!DOCTYPE html><html><head><title>Learn Markdown</title><link rel="stylesheet" href="/css/style.css" type="text/css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item">Markade</a><a href="/about/" class="item">About</a><a href="/docs/" class="item">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Learn Markdown</h1></div></div></div><div class="container"><div class="contain"><div class="main"></div><div class="sidebar"><div class="menu vertical"><a href="/docs/" class="item">Welcome</a><a href="/docs/quickstart.html" class="item">Quickstart</a><a href="/docs/markdown.html" class="item active">Markdown</a><a href="/docs/jade.html" class="item">Jade</a><a href="/docs/yaml.html" class="item">YAML</a></div></div></div></div><div class="footer"><div class="contain"><div class="left"><div>Markade ©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script></body></html>
+<!DOCTYPE html><html><head><title>Learn Markdown</title><link rel="stylesheet" href="/css/style.css" type="text/css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item">Markade</a><a href="/about/" class="item">About</a><a href="/docs/" class="item">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Learn Markdown</h1></div></div></div><div class="container"><div class="contain"><div class="main"><h2 id="overview">Overview</h2>
+<p>Markdown is a markup language for the web. It can output its data to a HTML format.
+The reason we&#39;re using markdown is very simple: it is well, known, tested and robust.</p>
+<p>It is used by companies like Reddit in their commenting features, by Github in their Readme
+and by many other companies around the world.</p>
+<p>Markade uses <a href="https://github.com/chjj/marked">marked</a>.
+It enables some additional features like tables, HTML content and abbreviations.</p>
+<div class='terminal group'>
+<div class="title">This is <strong>bold</strong>, this is <em>italic</em> and this is a <a href="http://markade.il.ly">link</a>.</div><pre class="markdown shell">
+<code>This is **bold**,
+this is *italic* and
+this is a [link](#).</code>
+<code>This is &lt;strong&gt;bold&lt;/strong&gt;,
+this is &lt;em&gt;italic&lt;/em&gt; and
+this is a &lt;a href=&quot;#&quot;&gt;link&lt;/a&gt;.</code>
+</pre></div>
+
+<hr>
+<h2 id="html">HTML</h2>
+<p>A thing to keep in mind is that markdown does not provide styling on its own.
+Neither does it help with layout, so things like a sidebar, grid and so forth
+are impossible to do well in this language.</p>
+<p>But still, if you really have to, you can embed HTML content in a markdown file,
+it depends on the template if it is not escaped.</p>
+<pre><code class="lang-markdown">This is &lt;b&gt;bold&lt;/b&gt;, this is &lt;em&gt;italic&lt;/em&gt; and this is a script:
+  &lt;script&gt;document.write(new Date())&lt;/script&gt;
+</code></pre>
+<p>This is <b>bold</b>, this is <em>italic</em> and this is a script:</p>
+<script>document.write(new Date())</script>
+
+<hr>
+<h2 id="additions">Additions</h2>
+<p>There is a lot more information on the internet that I can provide in this guide.
+The only major change in Markade that we have is that we use </p>
+<pre><code>  @ begin
+    markdown content
+  @ end
+</code></pre><p>blocks
+which are explained in depth in the <a href="/docs/yaml.html">YAML</a> section of the documentation.</p>
+<hr>
+<h3 id="resources">Resources</h3>
+<ul>
+<li><a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavored Markdown</a></li>
+<li><a href="https://gist.github.com/dupuy/1855764">Common markup</a></li>
+</ul>
+</div><div id="sidebar" style="position: sticky;" class="sidebar"><div class="menu vertical"><a href="/docs/" class="item">Welcome</a><a href="/docs/quickstart.html" class="item">Quickstart</a><a href="/docs/markdown.html" class="item active">Markdown</a><a href="#overview" class="sub item">Overview</a><a href="#html" class="sub item">HTML</a><a href="#additions" class="sub item">Additions</a><a href="#resources" class="sub item">Resources</a><a href="/docs/jade.html" class="item">Jade</a><a href="/docs/yaml.html" class="item">YAML</a></div></div></div></div><div class="footer"><div class="contain"><div class="left"><div>Markade ©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script><script>$(document).ready(function() {
+  $('.terminal.group .jade.shell').each(function(i, block) {
+    var first = block.children[0];
+    var second = block.children[1];
+    first.className = "jade";
+    second.className = "html";
+  });
+  $('pre code').each(function(i, block) {
+    block.className = block.className.replace("lang-", "");
+    hljs.highlightBlock(block);
+  });
+  
+  var menu = document.querySelector('.sidebar')
+  var menuPosition = menu.getBoundingClientRect().top;
+  window.onscroll = function() {
+      if (window.pageYOffset >= menuPosition) {
+          menu.style.position = 'fixed';
+          menu.style.top = '0px';
+      } else {
+          menu.style.position = 'static';
+          menu.style.top = '';
+      }
+  };
+});</script></body></html>

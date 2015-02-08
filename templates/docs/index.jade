@@ -5,10 +5,42 @@ block content
     .main
       if (html)
         | !{html}
-    .sidebar
+    .sidebar#sidebar(style="position: sticky;")
       .menu.vertical
-        +menuItem("/docs/", "docs/index", "Welcome")
-        +menuItem("/docs/quickstart.html", "docs/quickstart", "Quickstart")
-        +menuItem("/docs/markdown.html", "docs/markdown", "Markdown")
-        +menuItem("/docs/jade.html", "docs/jade", "Jade")
-        +menuItem("/docs/yaml.html", "docs/yaml", "YAML")
+        +docsMenu("/docs/", "docs/index", "Welcome", $.nav)
+        +docsMenu("/docs/quickstart.html", "docs/quickstart", "Quickstart", $.nav)
+        +docsMenu("/docs/markdown.html", "docs/markdown", "Markdown", $.nav)
+        +docsMenu("/docs/jade.html", "docs/jade", "Jade", $.nav)
+        +docsMenu("/docs/yaml.html", "docs/yaml", "YAML", $.nav)
+
+
+append style
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css">
+
+append script
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+  script.
+    $(document).ready(function() {
+      $('.terminal.group .jade.shell').each(function(i, block) {
+        var first = block.children[0];
+        var second = block.children[1];
+        first.className = "jade";
+        second.className = "html";
+      });
+      $('pre code').each(function(i, block) {
+        block.className = block.className.replace("lang-", "");
+        hljs.highlightBlock(block);
+      });
+      
+      var menu = document.querySelector('.sidebar')
+      var menuPosition = menu.getBoundingClientRect().top;
+      window.onscroll = function() {
+          if (window.pageYOffset >= menuPosition) {
+              menu.style.position = 'fixed';
+              menu.style.top = '0px';
+          } else {
+              menu.style.position = 'static';
+              menu.style.top = '';
+          }
+      };
+    });

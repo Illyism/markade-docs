@@ -167,6 +167,16 @@
     margin-top: -18px;
     min-height: 100vh;
   }
+ .main hr:after {
+    content: "§";
+    display: inline-block;
+    position: relative; 
+    top: -0.7em;  
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: #fff;
+  }
+
   .main h1 {
     margin-top: 0px;
   }
@@ -178,6 +188,11 @@
   .sidebar .menu .item {
     padding: 15px;
     border-bottom: 1px dotted rgba(0,0,0, .2);
+  }
+ .sidebar .menu .item.sub {
+    margin-left: 20px;
+    font-size: 14px;
+    border-bottom: none;
   }
   .sidebar .menu .item.active {
     background: #fff;
@@ -207,6 +222,9 @@
     font-weight: 600;
     background-color: #252525;
     border-bottom: 1px solid #111;
+  }
+  .terminal .title a {
+    color: #ccc;
   }
   .terminal .title .btn {
     padding: 0 10px;
@@ -276,4 +294,59 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+  }
+  .terminal.group .shell {
+    overflow: hidden;
+    padding: 0;
+    line-height: 0;
+  }
+  .terminal.group .shell, .terminal.group .title {
+    margin: 0;
+  }
+  .terminal.group code {
+    line-height: 14px;
+    font-size: 12px;
+
+    padding: .5em 1.5em;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+    width: 50%;
+    float: left;
+
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: top;
+
+    zoom: 1;
+    *display: inline;
+  }
+  .terminal.group code:before {
+    text-transform: uppercase;
+    display: block;
+    font-weight: 800;
+  }
+  .terminal.group.vertical code {
+    display: block;
+    float: none;
+    width: 100%;
+  }
+  .terminal.group.vertical code:first-child {
+    border-bottom: 1px dashed rgba(255,255,255,.2);
+  }
+  .terminal.group .jade code:first-child:before {
+    content: "jade";
+  }
+  .terminal.group .jade code:last-child:before {
+    content: "html";
+  }
+
+  .terminal.group .markdown code:first-child:before {
+    content: "markdown";
+  }
+  .terminal.group .markdown code:last-child:before {
+    content: "html";
   }

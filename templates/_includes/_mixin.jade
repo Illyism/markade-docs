@@ -18,4 +18,10 @@ mixin terminal(title, shell, html)
           | !{html}
 
 mixin menuItem(url, page, title)
-  a.item(href=url, class=($.page == page?"active":"")) #{title}
+  a.item(href=url, class={active: $.page === page}) #{title}
+
+mixin docsMenu(url, page, title, items)
+  a.item(href=url, class={active: $.page === page}) #{title}
+  if items && page == $.page
+    for item in items
+      a.sub.item(href="#" + item.toLowerCase().split(" ").join("-")) #{item}

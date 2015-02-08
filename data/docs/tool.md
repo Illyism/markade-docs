@@ -1,8 +1,8 @@
 ---
 template: docs/index.jade
-page: docs/quickstart
-title: Quick-Start Guide
-description: Going from 0 to 100 in 3 commands.
+page: docs/tool
+title: Markade
+description: Markade - The tool in three commands.
 ---
 
 First, you need [node.js](http://nodejs.org) and [npm](http://npmjs.com). Follow the installation instructions from node.js.

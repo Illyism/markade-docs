@@ -303,9 +303,11 @@
   .terminal.group .shell, .terminal.group .title {
     margin: 0;
   }
-  .terminal.group code {
+  .terminal.group code, .terminal.group .result  {
     line-height: 14px;
     font-size: 12px;
+
+    color: #fff;
 
     padding: .5em 1.5em;
     white-space: pre-wrap;       /* css-3 */
@@ -347,6 +349,12 @@
   .terminal.group .markdown code:first-child:before {
     content: "markdown";
   }
-  .terminal.group .markdown code:last-child:before {
-    content: "html";
+  .terminal.group .markdown .result {
+
+  }
+  .terminal.group .markdown .result:last-child:before {
+    content: "result";
+    text-transform: uppercase;
+    display: block;
+    font-weight: 800;
   }

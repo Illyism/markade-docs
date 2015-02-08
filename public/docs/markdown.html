@@ -1,8 +1,6 @@
-<!DOCTYPE html><html><head><title>Learn Markdown</title><link rel="stylesheet" href="/css/style.css" type="text/css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item">Markade</a><a href="/about/" class="item">About</a><a href="/docs/" class="item">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Learn Markdown</h1></div></div></div><div class="container"><div class="contain"><div class="main"><h2 id="overview">Overview</h2>
+<!DOCTYPE html><html><head lang="en"><title>Content by Markdown</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="keywords" content="static,site,generator,html,markdown, jade, yaml"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="description" content="A static site generator that stands on the shoulders of giants."><link rel="stylesheet" href="/css/style.css" type="text/css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item">Markade</a><a href="/about/" class="item">About</a><a href="/docs/" class="item">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Content by Markdown</h1><p class="description">A brief guide on Markdown, a text-to-HTML conversion tool for web writers.</p></div></div></div><div class="container"><div class="contain"><div class="main"><h2 id="overview">Overview</h2>
 <p>Markdown is a markup language for the web. It can output its data to a HTML format.
 The reason we&#39;re using markdown is very simple: it is well, known, tested and robust.</p>
-<p>It is used by companies like Reddit in their commenting features, by Github in their Readme
-and by many other companies around the world.</p>
 <p>Markade uses <a href="https://github.com/chjj/marked">marked</a>.
 It enables some additional features like tables, HTML content and abbreviations.</p>
 <div class='terminal group'>
@@ -15,19 +13,45 @@ this is &lt;em&gt;italic&lt;/em&gt; and
 this is a &lt;a href=&quot;#&quot;&gt;link&lt;/a&gt;.</code>
 </pre></div>
 
+<blockquote>
+<p>Make sure to view the <a href="#resources">Links</a> below to learn more of the basics.</p>
+</blockquote>
 <hr>
 <h2 id="html">HTML</h2>
 <p>A thing to keep in mind is that markdown does not provide styling on its own.
-Neither does it help with layout, so things like a sidebar, grid and so forth
-are impossible to do well in this language.</p>
-<p>But still, if you really have to, you can embed HTML content in a markdown file,
-it depends on the template if it is not escaped.</p>
-<pre><code class="lang-markdown">This is &lt;b&gt;bold&lt;/b&gt;, this is &lt;em&gt;italic&lt;/em&gt; and this is a script:
-  &lt;script&gt;document.write(new Date())&lt;/script&gt;
-</code></pre>
-<p>This is <b>bold</b>, this is <em>italic</em> and this is a script:</p>
+The language is meant for a simple blog post, or a reply to a comment.</p>
+<p>But Markdown allows HTML that can be embedded, so for our purpose it can help
+tremendously in setting up the styling just like we want it.
+You can add classnames or ids or nest as you want.</p>
+<div class='terminal group'>
+<div class="title">HTML in Markdown Example.</div><pre class="markdown shell">
+<code>This is **bold**, this is &lt;em&gt;italic&lt;/em&gt; and this is a script:
+  &lt;script&gt;document.write(new Date())&lt;/script&gt;</code>
+<div class="result">This is <strong>bold</strong>, this is <em>italic</em> and this is a script:
 <script>document.write(new Date())</script>
+</div>
+</pre></div>
 
+<p>For example, the way I set up these code examples like the one above is:</p>
+<pre><code class="lang-html">&lt;div class=&#39;terminal group&#39;&gt;
+&lt;div class=&quot;title&quot;&gt;Title&lt;/div&gt;
+&lt;pre class=&quot;markdown shell&quot;&gt;
+  &lt;code&gt;
+  This is **bold**,
+  this is *italic* and
+  this is a [link](#).
+  &lt;/code&gt;
+  &lt;code&gt;
+  This is &lt;strong&gt;bold&lt;/strong&gt;,
+  this is &lt;em&gt;italic&lt;/em&gt; and
+  this is a &lt;a href=&quot;#&quot;&gt;link&lt;/a&gt;.
+  &lt;/code&gt;
+&lt;/pre&gt;&lt;/div&gt;
+</code></pre>
+<p>And all the rest is handled in CSS. This works well for our purpose because it can be
+still used by experienced web-developers in creating their content, they can do as they will.</p>
+<p>But even by someone with less technological knowledge, it can be edited after just a brief
+knowledge of markdown.</p>
 <hr>
 <h2 id="additions">Additions</h2>
 <p>There is a lot more information on the internet that I can provide in this guide.
@@ -40,10 +64,11 @@ which are explained in depth in the <a href="/docs/yaml.html">YAML</a> section o
 <hr>
 <h3 id="resources">Resources</h3>
 <ul>
+<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheat Sheet</a></li>
+<li><a href="http://learnxinyminutes.com/docs/markdown/">Learn Markdown in Y Minutes</a></li>
 <li><a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavored Markdown</a></li>
-<li><a href="https://gist.github.com/dupuy/1855764">Common markup</a></li>
 </ul>
-</div><div id="sidebar" style="position: sticky;" class="sidebar"><div class="menu vertical"><a href="/docs/" class="item">Welcome</a><a href="/docs/quickstart.html" class="item">Quickstart</a><a href="/docs/markdown.html" class="item active">Markdown</a><a href="#overview" class="sub item">Overview</a><a href="#html" class="sub item">HTML</a><a href="#additions" class="sub item">Additions</a><a href="#resources" class="sub item">Resources</a><a href="/docs/jade.html" class="item">Jade</a><a href="/docs/yaml.html" class="item">YAML</a></div></div></div></div><div class="footer"><div class="contain"><div class="left"><div>Markade ©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script><script>$(document).ready(function() {
+</div><div id="sidebar" style="position: sticky;" class="sidebar"><div class="menu vertical"><a href="/docs/" class="item">Welcome</a><a href="/docs/tool.html" class="item">Markade</a><a href="/docs/markdown.html" class="item active">Content : Markdown</a><a href="#overview" class="sub item">Overview</a><a href="#html" class="sub item">HTML</a><a href="#additions" class="sub item">Additions</a><a href="#resources" class="sub item">Resources</a><a href="/docs/jade.html" class="item">Templates : Jade</a><a href="/docs/yaml.html" class="item">Data : YAML</a></div></div></div></div><div class="footer"><div class="contain"><div class="left"><div>Markade ©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script><script>$(document).ready(function() {
   $('.terminal.group .jade.shell').each(function(i, block) {
     var first = block.children[0];
     var second = block.children[1];

@@ -1,7 +1,8 @@
 ---
 template: docs/index.jade
 page: docs/jade
-title: Learn Jade
+title: Templates by Jade
+description: Jade is a terse and simple templating language for HTML.
 nav:
   - Overview
   - Tags and Content
@@ -13,8 +14,12 @@ nav:
 ---
 ## Overview
 
-Jade is a templating engine built for Node.js - It is not the fastest out there
-but one that is very fun to write and very compact and extendable.
+Jade is an elegant templating language, it has roots from Emmet and Haml and is meant for
+quick, clean HTML coding. Jade is not the most [performant](http://paularmstrong.github.io/node-templates/benchmarks.html)
+out there but for static websites, as is our purpose here it is good enough.
+
+Personally, Jade allows me to write HTML very quickly especially combined with the powers of
+mixins, a good structure and includes.
 
 Here is a sample hello world page in Jade:
 

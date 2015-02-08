@@ -1,0 +1,37 @@
+<!DOCTYPE html><html><head lang="en"><title>Markade</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="keywords" content="static,site,generator,html,markdown, jade, yaml"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="description" content="A static site generator that stands on the shoulders of giants."><link rel="stylesheet" href="/css/style.css" type="text/css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item">Markade</a><a href="/about/" class="item">About</a><a href="/docs/" class="item">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Markade</h1><p class="description">Markade - The tool in three commands.</p></div></div></div><div class="container"><div class="contain"><div class="main"><p>First, you need <a href="http://nodejs.org">node.js</a> and <a href="http://npmjs.com">npm</a>. Follow the installation instructions from node.js.</p>
+<p>Then, to install Markade you will need to have NPM and run <code>npm install -g markade</code>. This will install Markade as a binary
+allowing you to execute it anywhere.</p>
+<p>Then you can edit your files or confirm that everyone is working okay by compiling the sample files that Markade includes.
+You can do this with <code>markade compile &lt;directory&gt;</code> to look for markade.json and compile all the files it finds.</p>
+<p>You can then watch and run a local server to view the files with <code>markade watch &lt;directory&gt;</code>.</p>
+<p>In short:</p>
+<pre><code class="lang-bash"> $ npm install -g markade
+ $ markade init website
+ $ cd website
+~/website $ markade compile
+~/website $ markade watch
+</code></pre>
+</div><div id="sidebar" style="position: sticky;" class="sidebar"><div class="menu vertical"><a href="/docs/" class="item">Welcome</a><a href="/docs/tool.html" class="item active">Markade</a><a href="/docs/markdown.html" class="item">Content : Markdown</a><a href="/docs/jade.html" class="item">Templates : Jade</a><a href="/docs/yaml.html" class="item">Data : YAML</a></div></div></div></div><div class="footer"><div class="contain"><div class="left"><div>Markade ©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script><script>$(document).ready(function() {
+  $('.terminal.group .jade.shell').each(function(i, block) {
+    var first = block.children[0];
+    var second = block.children[1];
+    first.className = "jade";
+    second.className = "html";
+  });
+  $('pre code').each(function(i, block) {
+    block.className = block.className.replace("lang-", "");
+    hljs.highlightBlock(block);
+  });
+  
+  var menu = document.querySelector('.sidebar')
+  var menuPosition = menu.getBoundingClientRect().top;
+  window.onscroll = function() {
+      if (window.pageYOffset >= menuPosition) {
+          menu.style.position = 'fixed';
+          menu.style.top = '0px';
+      } else {
+          menu.style.position = 'static';
+          menu.style.top = '';
+      }
+  };
+});</script></body></html>

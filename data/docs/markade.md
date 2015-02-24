@@ -41,6 +41,9 @@ You can then watch and run a local server to view the files with `markade watch 
   1. A YAML variable `template: file.jade` specified.
   2. Templates defined in your markade.json in a templates object. `"templates": {"file.jade": "file.md"}`
   3. If none found, it defaults to a file with the same name in the template directory. 
+3. Then it will write the file in the same relative path as your data file in your output directory in the following way:
+  1. A YAML variable `output: file.xml` specified.
+  2. The same name and relative path as your data file: `data/about/index.md` -> `public/about/index.html`.
 
 ## Watching
 

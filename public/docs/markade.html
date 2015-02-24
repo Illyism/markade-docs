@@ -26,6 +26,11 @@ You can do this with <code>markade compile &lt;directory&gt;</code> to look for 
 <li>If none found, it defaults to a file with the same name in the template directory. </li>
 </ol>
 </li>
+<li>Then it will write the file in the same relative path as your data file in your output directory in the following way:<ol>
+<li>A YAML variable <code>output: file.xml</code> specified.</li>
+<li>The same name and relative path as your data file: <code>data/about/index.md</code> -&gt; <code>public/about/index.html</code>.</li>
+</ol>
+</li>
 </ol>
 <h2 id="watching">Watching</h2>
 <ol>

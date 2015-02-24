@@ -42,4 +42,9 @@ append script
               menu.style.top = '';
           }
       };
+
+      $('table td:nth-child(2):contains("string")').addClass("string")
+      $('table td:nth-child(2):contains("object")').addClass("object")
+      $('table td:nth-child(2):contains("function")').addClass("function")
+      $('table td:nth-child(2):contains("boolean")').addClass("boolean")
     });

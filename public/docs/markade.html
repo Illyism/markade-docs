@@ -1,17 +1,154 @@
-<!DOCTYPE html><html><head lang="en"><title>Markade</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="keywords" content="static,site,generator,html,markdown, jade, yaml"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="description" content="A static site generator that stands on the shoulders of giants."><link rel="stylesheet" href="/css/style.css" type="text/css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item">Markade</a><a href="/about/" class="item">About</a><a href="/docs/markade.html" class="item active">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Markade</h1><p class="description">Markade - The tool in three commands.</p></div></div></div><div class="container"><div class="contain"><div class="main"><p>First, you need <a href="http://nodejs.org">node.js</a> and <a href="http://npmjs.com">npm</a>. Follow the installation instructions from node.js.</p>
+<!DOCTYPE html><html><head lang="en"><title>Markade</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="keywords" content="static,site,generator,html,markdown, jade, yaml"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="description" content="A static site generator that stands on the shoulders of giants."><link rel="stylesheet" href="/css/style.css" type="text/css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item">Markade</a><a href="/about/" class="item">About</a><a href="/docs/markade.html" class="item active">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Markade</h1><p class="description">Markade - The tool in three commands.</p></div></div></div><div class="container"><div class="contain"><div class="main"><h1 id="cli">CLI</h1>
+<p>First, you need <a href="http://nodejs.org">node.js</a> and <a href="http://npmjs.com">npm</a>. Follow the installation instructions from node.js.</p>
 <p>Then, to install Markade you will need to have NPM and run <code>npm install -g markade</code>. This will install Markade as a binary
 allowing you to execute it anywhere.</p>
 <p>Then you can edit your files or confirm that everyone is working okay by compiling the sample files that Markade includes.
 You can do this with <code>markade compile &lt;directory&gt;</code> to look for markade.json and compile all the files it finds.</p>
 <p>You can then watch and run a local server to view the files with <code>markade watch &lt;directory&gt;</code>.</p>
-<p>In short:</p>
-<pre><code class="lang-bash"> $ npm install -g markade
- $ markade init website
- $ cd website
-~/website $ markade compile
-~/website $ markade watch
+<h2 id="installation">Installation</h2>
+<ol>
+<li>Get <a href="https://github.com/joyent/node/wiki/installation">Node</a>.</li>
+<li>Install Markade: <code>npm install -g markade</code></li>
+<li>You now have the <code>markade</code> command line utility.</li>
+</ol>
+<h2 id="initializing">Initializing</h2>
+<ol>
+<li>(Optional) Make a new directory.</li>
+<li>To initialize, run <code>markade init &lt;directory&gt;</code>. This will create a markade.json file and copy over the sample templates and data.</li>
+<li>You can edit the markade.json file as you wish, such as the paths for outut, template or data.</li>
+</ol>
+<h2 id="compiling">Compiling</h2>
+<ol>
+<li>(Optional) Move into your directory.</li>
+<li>To compile, run <code>markade compile &lt;directory&gt;</code>. This will look for markade.json you created earlier then look for data files in the data directory you specified and compare them against the templates in the following way:<ol>
+<li>A YAML variable <code>template: file.jade</code> specified.</li>
+<li>Templates defined in your markade.json in a templates object. <code>&quot;templates&quot;: {&quot;file.jade&quot;: &quot;file.md&quot;}</code></li>
+<li>If none found, it defaults to a file with the same name in the template directory. </li>
+</ol>
+</li>
+</ol>
+<h2 id="watching">Watching</h2>
+<ol>
+<li>To watch for changes and run a server, run <code>markade watch &lt;directory&gt;</code></li>
+</ol>
+<hr>
+<h1 id="api">API</h1>
+<h2 id="options">Options</h2>
+<p>The API takes an options object with the following set of options.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jade</td>
+<td>object</td>
+<td>Jade options</td>
+</tr>
+<tr>
+<td>template</td>
+<td>string</td>
+<td>Source Jade template string</td>
+</tr>
+<tr>
+<td>options</td>
+<td>object</td>
+<td>Options for markade and jade</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function</td>
+<td>A function to call on error or compilation with <code>(err, html)</code> as arguments</td>
+</tr>
+</tbody>
+</table>
+<h3 id="options-log">options.log</h3>
+<p>Options for logging to console. Available options include:</p>
+<ul>
+<li>&quot;off&quot; - No logging</li>
+<li>&quot;warn&quot; - Output warnings</li>
+<li>&quot;error&quot; - Output errors</li>
+<li>&quot;log&quot; - Output important information including warnings and errors</li>
+<li>&quot;info&quot; - Output everything</li>
+</ul>
+<h3 id="options-jade">options.jade</h3>
+<p>Takes all options that the Jade API takes. Here are the most useful ones.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filename</td>
+<td>string</td>
+<td>The path to your filename, required for relative includes and extends</td>
+</tr>
+<tr>
+<td>pretty</td>
+<td>boolean</td>
+<td>Adds whitespace to the resulting html to make it easier for a human to read using <code>&#39; &#39;</code> as indentation. If a string is specified, that will be used as indentation instead (e.g. <code>&#39;\t&#39;</code>).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="markade-data-template-options-callback-">markade(data, template, options, callback)</h2>
+<p>Compile a Jade string with a Markdown string to a HTML string.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>string</td>
+<td>Markdown stringng</td>
+</tr>
+<tr>
+<td>template</td>
+<td>string</td>
+<td>Source Jade template string</td>
+</tr>
+<tr>
+<td>options</td>
+<td>object</td>
+<td>Options for Markade and Jade (see <a href="#options">above</a>)</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>function</td>
+<td>A function to call on error or compilation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example">Example</h2>
+<pre><code class="lang-js">
+var markade = require(&quot;markade&quot;);
+
+var data = &quot;**bold** text&quot;;
+var template = &quot;| !{html}&quot;;
+
+var options = {
+  jade: {
+    filename: options.template
+  }
+};
+
+markade(data, template, options, function(err, html) {
+  if (err) return console.error(err);
+  console.log(html);
+});
+
+// returns: &lt;b&gt;bold&lt;/b&gt; text.
 </code></pre>
-</div><div id="sidebar" style="position: sticky;" class="sidebar"><div class="menu vertical"><a href="/docs/markade.html" class="item active">Markade</a><a href="/docs/markdown.html" class="item">Content</a><a href="/docs/jade.html" class="item">Templates</a><a href="/docs/yaml.html" class="item">Data</a></div></div></div></div><div class="footer"><div class="contain"><div class="left"><div>Markade ©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+</div><div id="sidebar" style="position: sticky;" class="sidebar"><div class="menu vertical"><a href="/docs/markade.html" class="item active">Markade</a><a href="#cli" class="sub item">CLI</a><a href="#api" class="sub item">API</a><a href="/docs/markdown.html" class="item">Content</a><a href="/docs/jade.html" class="item">Templates</a><a href="/docs/yaml.html" class="item">Data</a></div></div></div></div><div class="footer"><div class="contain"><div class="left"><div>Markade ©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
@@ -40,4 +177,9 @@ ga('send', 'pageview');</script><script src="//cdnjs.cloudflare.com/ajax/libs/hi
           menu.style.top = '';
       }
   };
+
+  $('table td:nth-child(2):contains("string")').addClass("string")
+  $('table td:nth-child(2):contains("object")').addClass("object")
+  $('table td:nth-child(2):contains("function")').addClass("function")
+  $('table td:nth-child(2):contains("boolean")').addClass("boolean")
 });</script></body></html>

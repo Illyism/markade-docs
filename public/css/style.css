@@ -374,3 +374,37 @@
     display: block;
     font-weight: 800;
   }
+
+
+  code {
+    color: #000;
+    background: rgba(0,0,0,.05);
+    padding: 0.4em;
+  }
+
+  table {
+    background: #F4F4F4;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table tbody td {
+    padding: 5px;
+    vertical-align: top;
+  }
+
+  table tbody tr:nth-child(2n) {
+    background-color: rgba(0,0,0,.05);
+  }
+  table tbody td.string {
+    color: #065793;
+  }
+  table tbody td.object {
+    color: #1E9F26;
+  }
+  table tbody td.function {
+    color: #C42121;
+  }
+  table tbody td.boolean {
+    color: #B0579A;
+  }

@@ -4,7 +4,7 @@ page: docs/jade
 title: Templates by Jade
 description: Jade is a terse and simple templating language for HTML.
 nav:
-  - Overview
+  - Jade
   - Tags and Content
   - Interpolation
   - Control
@@ -12,7 +12,7 @@ nav:
   - Templates
   - Resources
 ---
-## Overview
+## Jade
 
 Jade is an elegant templating language, it has roots from Emmet and Haml and is meant for
 quick, clean HTML coding. Jade is not the most [performant](http://paularmstrong.github.io/node-templates/benchmarks.html)

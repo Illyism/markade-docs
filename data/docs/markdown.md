@@ -4,12 +4,12 @@ page: docs/markdown
 title: Content by Markdown
 description: A brief guide on Markdown, a text-to-HTML conversion tool for web writers.
 nav:
-  - Overview
+  - Markdown
   - HTML
   - Additions
   - Resources
 ---
-## Overview
+## Markdown
 
 Markdown is a markup language for the web. It can output its data to a HTML format.
 The reason we're using markdown is very simple: it is well, known, tested and robust.

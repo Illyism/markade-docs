@@ -1,7 +1,7 @@
 ---
 template: docs/index.jade
 page: docs/markade
-title: <img src="/logo.png"/ height="72" width="auto" alt="Markade">
+title: Markade
 description: Markade - The tool in three commands.
 nav:
   - CLI

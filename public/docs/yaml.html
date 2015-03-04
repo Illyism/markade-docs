@@ -1,5 +1,146 @@
-<!DOCTYPE html><html><head lang="en"><link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/favicon/favicon.ico"><!--if IElink(rel='shortcut icon', href='/favicon/favicon.ico')--><!-- Optional: Android & iPhone--><link rel="apple-touch-icon-precomposed" href="/favicon/favicon-152.png"><!-- Optional: IE10 Tile.--><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="/favicon/favicon-144.png"><!-- Optional: ipads, androids, iphones, ...--><link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicon/favicon-152.png"><link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon/favicon-144.png"><link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicon/favicon-120.png"><link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicon/favicon-114.png"><link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon/favicon-72.png"><link rel="apple-touch-icon-precomposed" href="/favicon/favicon-57.png"><title>Data by YAML</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="keywords" content="static,site,generator,html,markdown, jade, yaml"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="description" content="A static site generator that stands on the shoulders of giants."><link rel="stylesheet" href="/css/style.css" type="text/css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item"><img src="/logo.png" alt="Markade"></a><a href="/about/" class="item">About</a><a href="/docs/markade.html" class="item">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Data by YAML</h1></div></div></div><div class="container"><div class="contain"><div class="main"><h2 id="yaml">YAML</h2>
-</div><div id="sidebar" style="position: sticky;" class="sidebar"><div class="menu vertical"><a href="/docs/markade.html" class="item">Markade</a><a href="/docs/markdown.html" class="item">Content</a><a href="/docs/jade.html" class="item">Templates</a><a href="/docs/yaml.html" class="item active">Data</a><a href="#yaml" class="sub item">YAML</a></div></div></div></div><div class="footer"><div class="contain"><div class="left"><div>Markade ©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+<!DOCTYPE html><html><head lang="en"><link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/favicon/favicon.ico"><!--if IElink(rel='shortcut icon', href='/favicon/favicon.ico')--><!-- Optional: Android & iPhone--><link rel="apple-touch-icon-precomposed" href="/favicon/favicon-152.png"><!-- Optional: IE10 Tile.--><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="/favicon/favicon-144.png"><!-- Optional: ipads, androids, iphones, ...--><link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicon/favicon-152.png"><link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon/favicon-144.png"><link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicon/favicon-120.png"><link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicon/favicon-114.png"><link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon/favicon-72.png"><link rel="apple-touch-icon-precomposed" href="/favicon/favicon-57.png"><title>Data by YAML</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="keywords" content="static,site,generator,html,markdown, jade, yaml"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="description" content="A static site generator that stands on the shoulders of giants."><link rel="stylesheet" href="/css/style.css" type="text/css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item">Markade</a><a href="/about/" class="item">About</a><a href="/docs/markade.html" class="item">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Data by YAML</h1><p class="description">The how to on YAML.</p></div></div></div><div class="container"><div class="contain"><div class="main"><h2 id="yaml">YAML</h2>
+<p>YAML is a recursive acronym for &quot;YAML Ain&#39;t Markup Language&quot;.
+It is a data serialisation language designed to be directly writable and readable by humans.
+It is data-oriented as opposed to markup-oriented like <a href="markdown.html">Markdown</a>.</p>
+<p>It is easy to write and data types can easily be mapped to javascript, you can set up
+arrays, objects, booleans, numbers and null values much like JSON.</p>
+<p>And all the data is structured by newlines and indentation.
+The amount of spaces doesn&#39;t matter as long as keys on the same level are indented with
+the same amount of space.</p>
+<p>In Markade, the YAML part starts in between two <code>---</code> blocks.</p>
+<h2 id="learn">Learn</h2>
+<blockquote>
+<p>from <a href="http://learnxinyminutes.com/docs/yaml/">Learn X In Y Minutes</a></p>
+</blockquote>
+<pre><code class="lang-yaml">---
+# Comments in YAML look like this.
+
+################
+# SCALAR TYPES #
+################
+
+# Our root object (which continues for the entire document) will be a map,
+# which is equivalent to a dictionary, hash or object in other languages.
+key: value
+another_key: Another value goes here.
+a_number_value: 100
+scientific_notation: 1e+12
+boolean: true
+null_value: null
+key with spaces: value
+# Notice that strings don&#39;t need to be quoted. However, they can be.
+however: &quot;A string, enclosed in quotes.&quot;
+&quot;Keys can be quoted too.&quot;: &quot;Useful if you want to put a &#39;:&#39; in your key.&quot;
+
+# Multiple-line strings can be written either as a &#39;literal block&#39; (using |),
+# or a &#39;folded block&#39; (using &#39;&gt;&#39;).
+literal_block: |
+    This entire block of text will be the value of the &#39;literal_block&#39; key,
+    with line breaks being preserved.
+
+    The literal continues until de-dented, and the leading indentation is
+    stripped.
+
+        Any lines that are &#39;more-indented&#39; keep the rest of their indentation -
+        these lines will be indented by 4 spaces.
+folded_style: &gt;
+    This entire block of text will be the value of &#39;folded_style&#39;, but this
+    time, all newlines will be replaced with a single space.
+
+    Blank lines, like above, are converted to a newline character.
+
+        &#39;More-indented&#39; lines keep their newlines, too -
+        this text will appear over two lines.
+
+####################
+# COLLECTION TYPES #
+####################
+
+# Nesting is achieved by indentation.
+a_nested_map:
+    key: value
+    another_key: Another Value
+    another_nested_map:
+        hello: hello
+
+# Maps don&#39;t have to have string keys.
+0.25: a float key
+
+# Keys can also be multi-line objects, using ? to indicate the start of a key.
+? |
+    This is a key
+    that has multiple lines
+: and this is its value
+
+# YAML also allows collection types in keys, but many programming languages
+# will complain.
+
+# Sequences (equivalent to lists or arrays) look like this:
+a_sequence:
+    - Item 1
+    - Item 2
+    - 0.5 # sequences can contain disparate types.
+    - Item 4
+    - key: value
+      another_key: another_value
+    -
+        - This is a sequence
+        - inside another sequence
+
+# Since YAML is a superset of JSON, you can also write JSON-style maps and
+# sequences:
+json_map: {&quot;key&quot;: &quot;value&quot;}
+json_seq: [3, 2, 1, &quot;takeoff&quot;]
+
+#######################
+# EXTRA YAML FEATURES #
+#######################
+
+# YAML also has a handy feature called &#39;anchors&#39;, which let you easily duplicate
+# content across your document. Both of these keys will have the same value:
+anchored_content: &amp;anchor_name This string will appear as the value of two keys.
+other_anchor: *anchor_name
+
+# YAML also has tags, which you can use to explicitly declare types.
+explicit_string: !!str 0.5
+
+# EXTRA YAML TYPES #
+####################
+
+# Strings and numbers aren&#39;t the only scalars that YAML can understand.
+# ISO-formatted date and datetime literals are also parsed.
+datetime: 2001-12-15T02:59:43.1Z
+datetime_with_spaces: 2001-12-14 21:59:43.10 -5
+date: 2002-12-14
+
+# The !!binary tag indicates that a string is actually a base64-encoded
+# representation of a binary blob.
+gif_file: !!binary |
+    R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5
+    OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+
+    +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC
+    AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=
+
+# YAML also has a set type, which looks like this:
+set:
+    ? item1
+    ? item2
+    ? item3
+
+# The above is equivalent to:
+set2:
+    item1: null
+    item2: null
+    item3: null
+---
+**Markdown** content
+</code></pre>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="http://learnxinyminutes.com/docs/yaml/">Learn Yaml in Y Minutes</a></li>
+<li><a href="https://en.wikipedia.org/wiki/YAML">YAML on Wikipedia</a></li>
+</ul>
+</div><div id="sidebar" style="position: sticky;" class="sidebar"><div class="menu vertical"><a href="/docs/markade.html" class="item">Markade</a><a href="/docs/markdown.html" class="item">Content</a><a href="/docs/jade.html" class="item">Templates</a><a href="/docs/yaml.html" class="item active">Data</a><a href="#yaml" class="sub item">YAML</a><a href="#learn" class="sub item">Learn</a><a href="#resources" class="sub item">Resources</a></div></div></div></div><div class="footer"><div class="contain"><div class="left"><div>Markade ©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');

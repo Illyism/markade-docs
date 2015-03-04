@@ -1,7 +1,7 @@
 ---
 template: static.jade
 page: about
-title: About <img src="/logo.png"/ height="42" width="auto" alt="Markade">.
+title: Why, how and who of Markade.
 ---
 ## Why use Markade?
 

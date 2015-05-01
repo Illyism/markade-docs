@@ -126,6 +126,8 @@
   }
   .header .menu .logo.item {
     color: #e7c547;
+    padding: 6px .5em;
+    float: left;
   }
   .header .menu .item.active:not(.logo) {
     background: rgba(0,0,0,.05);

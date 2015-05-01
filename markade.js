@@ -14,19 +14,24 @@ var data = {
       "second.md"
     ]
   }
-}
+};
 
 module.exports = function(callback) {
   var req = http.request({
     "host": "raw.githubusercontent.com",
-    "path": "http://rav.githubusercontent.com/Illyism/markade/master/package.json",
+    "path": "http://raw.githubusercontent.com/Illyism/markade/master/package.json",
   }, function(res) {
+    var body = "";
     res.on("data", function(pkg) {
-      var json = JSON.parse(pkg.toString());
+      body += pkg.toString();
+    });
+    res.on("end", function() {
+      var json = JSON.parse(body);
       data.pkg = json;
       data.version = json.version;
       callback(null, data);
-    })
+    });
+
   });
   req.end();
 };

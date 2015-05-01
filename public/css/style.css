@@ -93,21 +93,37 @@
     min-height: 250px;
   }
   .footer {
+    color: #232122;
+    background: #EBE8D0;
+    min-height: 100px;
+    margin-top: 100px;
+  }
+  body.inverted .footer {
     background: #232122;
     color: #EBE8D0;
-    min-height: 100px;
-    padding: 30px 0;
+  }
+  .footer .logo {
+    float: left;
+    padding: 5px;
+  }
+  .footer .logo img {
+    height: 80px;
+  }
+  body.inverted .footer .logo{
+    display: none;
   }
   .footer .left {
     max-width: 300px;
     font-size: 12px;
     float: left;
+    padding: 36px 10px;
   }
   .footer .right {
     float: right;
     font-size: 12px;
+    padding: 28px 0;
   }
-  .header a, .footer a, body.inverted a {
+  .header a, body.inverted a {
     color: rgba(255, 255, 255, 1);
   }
 

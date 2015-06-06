@@ -1,7 +1,7 @@
 var http = require("https");
 
 var data = {
-  "name": "Sample Markade Site",
+  "name": "Markade | Node.js, Jade, YAML and Markdown based Static Site Generator",
   "directories": {
     "output": "public",
     "template": "templates",

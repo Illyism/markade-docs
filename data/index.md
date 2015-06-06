@@ -31,65 +31,39 @@ shell:
   - dir: ~/website
     cmd: markade watch
 ---
-
-@ init
-```bash
-  ~/website $ markade init .
-
-  This utility will walk you through making a markade directory.
-
-  It will set up a markade.json file with defaults
-  and set up a basic Hello World page.
-
-  Press ^C at any time to quit.
-
-  Setting up in ~/website:
-    ~/website
-    ~/website/templates
-    ~/website/data
-    ~/website/public
-     ~/website/public/css
-     ~/website/public/js
-
-  » Is that okay? [yes] yes
-    ✔ ~/website
-    ✔ ~/website/templates
-    ✔ ~/website/data
-    ✔ ~/website/public
-    ✔ ~/website/public/js
-    ✔ ~/website/public/css
-
-    ✔ ~/website/markade.json
-    ✔ ~/website/public/css/style.css
-    ✔ ~/website/templates/index.jade
-    ✔ ~/website/data/index.md
-    ✔ ~/website/data/second.md
-
-    ✔ Now run markade compile mrk
-```
+@ local
+---
+title: Local
+image: /img/local.jpg
+url: http://local.il.ly
+github: https://github.com/Illyism/local-web/tree/master 
+---
+Website for an Android application
 @ end
 
-@ compile
-```bash
-  ~/website $ markade compile .                                      ⏎
-
-  Looking for markade.json in .
-  Compiling directory...
-  - Parsing: ~/website/data/second.md
-    Using template: ~/website/templates/index.jade
-  - Parsing: ~/website/data/index.md
-    Using template: ~/website/templates/index.jade
-    ✔ Compiled ~/website/data/second.md + ~/website/templates/index.jade = second.html
-    ✔ Compiled ~/website/data/index.md + ~/website/templates/index.jade = index.html
-```
+@ tasktool
+---
+title: Tasktool
+image: /img/tasktool.jpg
+url: http://tasktool.il.ly
+---
+Documentation for Tasktool
 @ end
 
-@ watch
-```bash
-  ~/website $ markade watch .
+@ sample
+---
+title: Sample Site
+image: /img/sample.jpg
+github: https://github.com/Illyism/markade-default
+---
+Sample markade site
+@ end
 
-  Looking for markade.json in ~/website...
-  Launching in ~/website on 8080
-  Serving "~/website" at http://0.0.0.0:8080
-```
+@ docs
+---
+title: Markade Docs
+image: /img/docs.jpg
+github: https://github.com/Illyism/markade-docs
+---
+The markade documentation
 @ end

@@ -5,7 +5,8 @@ title: Data by YAML
 description: The how to on YAML.
 nav:
   - YAML
-  - Learn
+  - For Markade
+  - Cheatsheet
   - Resources
 ---
 ## YAML
@@ -21,9 +22,126 @@ And all the data is structured by newlines and indentation.
 The amount of spaces doesn't matter as long as keys on the same level are indented with
 the same amount of space.
 
-In Markade, the YAML part starts in between two `---` blocks.
+## For Markade
 
-## Learn
+In Markade, the YAML part starts in between two `---` blocks which can be at the top of the document
+or between between `@ begin` and `@ end` blocks.
+
+Markade provides you with **three variables** out of the box:
+
+* **markade**: Your markade.json or markade.js file
+* **$**: Your YAML part of your root block
+*`**html**: The markdown part of your root block
+* **$$**: All the blocks enclosed in `@`
+
+### markade
+
+The `markade` variable is an object of your markade.json or markade.js file.
+Markade.js allows you to use functions in your jade files so you can read from the file system
+or do a HTTP request on compile time but you should beware of only using synced function calls.
+
+```
+// data: markade.json
+{
+    "name": "Sample Markade Site"
+}
+
+// template: index.jade
+title #{markade.name}
+
+// output: index.html
+<title>Sample Markade Site</title>
+```
+
+### $ and html
+
+The `$` object holds your YAML of your root-level block.
+The `html` is a parsed markdown as HTML.
+
+
+```
+// data: index.md
+---
+title: Hello World!
+---
+Some **markdown**
+
+
+// template: index.jade
+.title #{$.title}
+.content !{html}
+
+// output: index.html
+<div class="title">Hello World!</div>
+<div class="content">Some <b>markdown</b></div>
+```
+
+### $$
+
+The `$$` object holds all of the blocks in your markade data including `$`, which is found under `$$.normal`.
+Each block is divided in a YAML part
+
+- $$ Object
+  - $$[key] Object : a block
+    - $$[key].meta Object : your YAML as a POJO
+    - $$[key].html String : your markdown in HTML
+
+
+```
+// data: myfile.md
+---
+title: Hello
+description: hi
+---
+I'm in $.
+
+ @ feature
+---
+header: Robust
+link:
+  content: How Markade is made →
+  url: /about/
+---
+Working with true and tested technologies - no more reinventing the wheel, just Jade templates powered by YAML and Markdown.
+ @ end
+
+
+// template: myfile.jade
+head
+    title #{$.title}
+    meta(name="description", content=$.description)
+body
+    .content !{html}
+    .feature
+        h1 #{$$.feature.meta.header}
+        .content !{$$.feature.html}
+        a(href=$$.feature.meta.link.url) #{$$.feature.meta.link.content}
+
+
+// output: myfile.html
+<head>
+    <title>Hello</title>
+    <meta content="hi" name="description">
+</head>
+
+<body>
+    <div class="content">
+        <p>I&#39;m in $.</p>
+    </div>
+    <div class="feature">
+        <h1>Robust</h1>
+        <div class="content">
+            <p>Working with true and tested technologies - no more reinventing
+            the wheel, just Jade templates powered by YAML and Markdown.</p>
+        </div>
+        <a href="/about/">How Markade is made →</a>
+    </div>
+</body>
+
+```
+
+
+## Cheatsheet
 > from [Learn X In Y Minutes](http://learnxinyminutes.com/docs/yaml/)
 
 ```yaml

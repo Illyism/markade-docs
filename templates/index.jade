@@ -16,10 +16,8 @@ block content
     +terminal("Quick-start Instructions", $.shell)
   hr
   .contain
-    +terminal("Initializing a Markade directory", null, blocks.init.html)
-  hr
-  .contain
-    +terminal("Compiling a Markade directory", null, blocks.compile.html)
-  hr
-  .contain
-    +terminal("Watching a Markade directory, and launching a server", null, blocks.watch.html)
+    h1.centered Examples
+    +example($$.local)
+    +example($$.tasktool)
+    +example($$.sample)
+    +example($$.docs)

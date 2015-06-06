@@ -26,3 +26,18 @@ mixin docsMenu(url, page, title, items)
   if items && page == $.page
     for item in items
       a.sub.item(href="#" + item.toLowerCase().split(" ").join("-")) #{item}
+
+mixin example(obj)
+  if obj.html
+    .example(class=obj.meta.css)
+      a(href=obj.meta.url || obj.meta.github)
+        img(src=obj.meta.image, alt=obj.meta.title)
+      .content
+        h3.title: a(href=obj.meta.url || obj.meta.github) #{obj.meta.title}
+        | !{obj.html}
+        if obj.meta.url
+          a(href=obj.meta.url) Visit
+        if obj.meta.url && obj.meta.github
+          |  - 
+        if obj.meta.github
+          a(href=obj.meta.github) Source Code

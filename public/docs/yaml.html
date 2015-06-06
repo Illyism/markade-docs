@@ -1,4 +1,4 @@
-<!DOCTYPE html><html><head lang="en"><link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/favicon/favicon.ico"><!--if IElink(rel='shortcut icon', href='/favicon/favicon.ico')--><!-- Optional: Android & iPhone--><link rel="apple-touch-icon-precomposed" href="/favicon/favicon-152.png"><!-- Optional: IE10 Tile.--><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="/favicon/favicon-144.png"><!-- Optional: ipads, androids, iphones, ...--><link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicon/favicon-152.png"><link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon/favicon-144.png"><link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicon/favicon-120.png"><link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicon/favicon-114.png"><link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon/favicon-72.png"><link rel="apple-touch-icon-precomposed" href="/favicon/favicon-57.png"><title>Data by YAML</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="keywords" content="static,site,generator,html,markdown, jade, yaml"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="description" content="A static site generator that stands on the shoulders of giants."><link rel="stylesheet" href="/css/style.css" type="text/css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item"><img src="/markade-white.png" height="30" alt="markade"></a><a href="/about/" class="item">About</a><a href="/docs/markade.html" class="item">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Data by YAML</h1><p class="description">The how to on YAML.</p></div></div></div><div class="container"><div class="contain"><div class="main"><h2 id="yaml">YAML</h2>
+<!DOCTYPE html><html><head lang="en"><link rel="icon" sizes="16x16 32x32 48x48 64x64" href="/favicon/favicon.ico"><!--if IElink(rel='shortcut icon', href='/favicon/favicon.ico')--><!-- Optional: Android & iPhone--><link rel="apple-touch-icon-precomposed" href="/favicon/favicon-152.png"><!-- Optional: IE10 Tile.--><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="/favicon/favicon-144.png"><!-- Optional: ipads, androids, iphones, ...--><link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicon/favicon-152.png"><link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicon/favicon-144.png"><link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicon/favicon-120.png"><link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicon/favicon-114.png"><link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicon/favicon-72.png"><link rel="apple-touch-icon-precomposed" href="/favicon/favicon-57.png"><title>Data by YAML | Markade | Node.js, Jade, YAML and Markdown based Static Site Generator</title><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="keywords" content="static,site,generator,html,markdown, jade, yaml"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"><meta name="description" content="A static site generator that stands on the shoulders of giants."><link rel="stylesheet" href="/css/style.css" type="text/css"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/tomorrow-night.min.css"></head><body><div class="header"><div class="menu"><div class="contain"><a href="/" class="logo item"><img src="/markade-white.png" height="30" alt="markade"></a><a href="/about/" class="item">About</a><a href="/docs/markade.html" class="item">Documentation</a><a href="/examples/" class="item">Examples</a><a href="http://github.com/illyism/markade" class="item">Github</a></div></div><div class="text"><div class="contain"><h1 class="title">Data by YAML</h1><p class="description">The how to on YAML.</p></div></div></div><div class="container"><div class="contain"><div class="main"><h2 id="yaml">YAML</h2>
 <p>YAML is a recursive acronym for &quot;YAML Ain&#39;t Markup Language&quot;.
 It is a data serialisation language designed to be directly writable and readable by humans.
 It is data-oriented as opposed to markup-oriented like <a href="markdown.html">Markdown</a>.</p>
@@ -7,8 +7,110 @@ arrays, objects, booleans, numbers and null values much like JSON.</p>
 <p>And all the data is structured by newlines and indentation.
 The amount of spaces doesn&#39;t matter as long as keys on the same level are indented with
 the same amount of space.</p>
-<p>In Markade, the YAML part starts in between two <code>---</code> blocks.</p>
-<h2 id="learn">Learn</h2>
+<h2 id="for-markade">For Markade</h2>
+<p>In Markade, the YAML part starts in between two <code>---</code> blocks which can be at the top of the document
+or between between <code>@ begin</code> and <code>@ end</code> blocks.</p>
+<p>Markade provides you with <strong>three variables</strong> out of the box:</p>
+<ul>
+<li><strong>markade</strong>: Your markade.json or markade.js file</li>
+<li><strong>$</strong>: Your YAML part of your root block
+<em>`<em>*html</em></em>: The markdown part of your root block</li>
+<li><strong>$$</strong>: All the blocks enclosed in <code>@</code></li>
+</ul>
+<h3 id="markade">markade</h3>
+<p>The <code>markade</code> variable is an object of your markade.json or markade.js file.
+Markade.js allows you to use functions in your jade files so you can read from the file system
+or do a HTTP request on compile time but you should beware of only using synced function calls.</p>
+<pre><code>// data: markade.json
+{
+    &quot;name&quot;: &quot;Sample Markade Site&quot;
+}
+
+// template: index.jade
+title #{markade.name}
+
+// output: index.html
+&lt;title&gt;Sample Markade Site&lt;/title&gt;
+</code></pre><h3 id="-and-html">$ and html</h3>
+<p>The <code>$</code> object holds your YAML of your root-level block.
+The <code>html</code> is a parsed markdown as HTML.</p>
+<pre><code>// data: index.md
+---
+title: Hello World!
+---
+Some **markdown**
+
+
+// template: index.jade
+.title #{$.title}
+.content !{html}
+
+// output: index.html
+&lt;div class=&quot;title&quot;&gt;Hello World!&lt;/div&gt;
+&lt;div class=&quot;content&quot;&gt;Some &lt;b&gt;markdown&lt;/b&gt;&lt;/div&gt;
+</code></pre><h3 id="-">$$</h3>
+<p>The <code>$$</code> object holds all of the blocks in your markade data including <code>$</code>, which is found under <code>$$.normal</code>.
+Each block is divided in a YAML part</p>
+<ul>
+<li>$$ Object<ul>
+<li>$$[key] Object : a block<ul>
+<li>$$[key].meta Object : your YAML as a POJO</li>
+<li>$$[key].html String : your markdown in HTML</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>// data: myfile.md
+---
+title: Hello
+description: hi
+---
+I&#39;m in $.
+
+ @ feature
+---
+header: Robust
+link:
+  content: How Markade is made →
+  url: /about/
+---
+Working with true and tested technologies - no more reinventing the wheel, just Jade templates powered by YAML and Markdown.
+ @ end
+
+
+// template: myfile.jade
+head
+    title #{$.title}
+    meta(name=&quot;description&quot;, content=$.description)
+body
+    .content !{html}
+    .feature
+        h1 #{$$.feature.meta.header}
+        .content !{$$.feature.html}
+        a(href=$$.feature.meta.link.url) #{$$.feature.meta.link.content}
+
+
+// output: myfile.html
+&lt;head&gt;
+    &lt;title&gt;Hello&lt;/title&gt;
+    &lt;meta content=&quot;hi&quot; name=&quot;description&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div class=&quot;content&quot;&gt;
+        &lt;p&gt;I&amp;#39;m in $.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;feature&quot;&gt;
+        &lt;h1&gt;Robust&lt;/h1&gt;
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;p&gt;Working with true and tested technologies - no more reinventing
+            the wheel, just Jade templates powered by YAML and Markdown.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;a href=&quot;/about/&quot;&gt;How Markade is made →&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre><h2 id="cheatsheet">Cheatsheet</h2>
 <blockquote>
 <p>from <a href="http://learnxinyminutes.com/docs/yaml/">Learn X In Y Minutes</a></p>
 </blockquote>
@@ -140,7 +242,7 @@ set2:
 <li><a href="http://learnxinyminutes.com/docs/yaml/">Learn Yaml in Y Minutes</a></li>
 <li><a href="https://en.wikipedia.org/wiki/YAML">YAML on Wikipedia</a></li>
 </ul>
-</div><div id="sidebar" style="position: sticky;" class="sidebar"><div class="menu vertical"><a href="/docs/markade.html" class="item">Markade</a><a href="/docs/markdown.html" class="item">Content</a><a href="/docs/jade.html" class="item">Templates</a><a href="/docs/yaml.html" class="item active">Data</a><a href="#yaml" class="sub item">YAML</a><a href="#learn" class="sub item">Learn</a><a href="#resources" class="sub item">Resources</a></div></div></div></div><div class="footer"><div class="contain"><div class="logo"><a href="/"><img src="/markade-black.png" alt="markade"></a></div><div class="left"><div>©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+</div><div id="sidebar" style="position: sticky;" class="sidebar"><div class="menu vertical"><a href="/docs/markade.html" class="item">Markade</a><a href="/docs/markdown.html" class="item">Content</a><a href="/docs/jade.html" class="item">Templates</a><a href="/docs/yaml.html" class="item active">Data</a><a href="#yaml" class="sub item">YAML</a><a href="#for-markade" class="sub item">For Markade</a><a href="#cheatsheet" class="sub item">Cheatsheet</a><a href="#resources" class="sub item">Resources</a></div></div></div></div><div class="footer"><div class="contain"><div class="logo"><a href="/"><img src="/markade-black.png" alt="markade"></a></div><div class="left"><div>©2015 Ilias Ismanalijev</div><div>Available under the GPLv3 License.</div></div><div class="right"><div class="menu"><a href="https://github.com/illyism/markade" class="item">Markade Repo</a><a href="https://github.com/illyism/markade-docs" class="item">Website Repo</a></div></div></div></div><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');

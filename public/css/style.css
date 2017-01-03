@@ -389,10 +389,10 @@
   .terminal.group.vertical code:first-child {
     border-bottom: 1px dashed rgba(255,255,255,.2);
   }
-  .terminal.group .jade code:first-child:before {
-    content: "jade";
+  .terminal.group .pug code:first-child:before {
+    content: "pug";
   }
-  .terminal.group .jade code:last-child:before {
+  .terminal.group .pug code:last-child:before {
     content: "html";
   }
 

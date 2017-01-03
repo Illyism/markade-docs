@@ -1,5 +1,5 @@
 ---
-template: docs/index.jade
+template: docs/index.pug
 page: docs/yaml
 title: Data by YAML
 description: The how to on YAML.
@@ -37,7 +37,7 @@ Markade provides you with **three variables** out of the box:
 ### markade
 
 The `markade` variable is an object of your markade.json or markade.js file.
-Markade.js allows you to use functions in your jade files so you can read from the file system
+Markade.js allows you to use functions in your pug files so you can read from the file system
 or do a HTTP request on compile time but you should beware of only using synced function calls.
 
 ```
@@ -46,7 +46,7 @@ or do a HTTP request on compile time but you should beware of only using synced 
     "name": "Sample Markade Site"
 }
 
-// template: index.jade
+// template: index.pug
 title #{markade.name}
 
 // output: index.html
@@ -67,7 +67,7 @@ title: Hello World!
 Some **markdown**
 
 
-// template: index.jade
+// template: index.pug
 .title #{$.title}
 .content !{html}
 
@@ -102,11 +102,11 @@ link:
   content: How Markade is made →
   url: /about/
 ---
-Working with true and tested technologies - no more reinventing the wheel, just Jade templates powered by YAML and Markdown.
+Working with true and tested technologies - no more reinventing the wheel, just Pug templates powered by YAML and Markdown.
  @ end
 
 
-// template: myfile.jade
+// template: myfile.pug
 head
     title #{$.title}
     meta(name="description", content=$.description)
@@ -132,7 +132,7 @@ body
         <h1>Robust</h1>
         <div class="content">
             <p>Working with true and tested technologies - no more reinventing
-            the wheel, just Jade templates powered by YAML and Markdown.</p>
+            the wheel, just Pug templates powered by YAML and Markdown.</p>
         </div>
         <a href="/about/">How Markade is made →</a>
     </div>

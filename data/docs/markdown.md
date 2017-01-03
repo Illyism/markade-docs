@@ -1,5 +1,5 @@
 ---
-template: docs/index.jade
+template: docs/index.pug
 page: docs/markdown
 title: Content by Markdown
 description: A brief guide on Markdown, a text-to-HTML conversion tool for web writers.

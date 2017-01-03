@@ -1,4 +1,4 @@
 ---
-template: redirect.jade
+template: redirect.pug
 to: /docs/markade.html
 ---

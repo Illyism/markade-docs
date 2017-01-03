@@ -1,5 +1,5 @@
 ---
-template: static.jade
+template: static.pug
 page: about
 title: Why, how and who of Markade.
 ---
@@ -42,7 +42,7 @@ An addition that Markade makes on top of this is the combination of both
 YAML and Markdown in one file. That, and the seperation of specific Markdown
 blocks to an object that holds them all seperately.
 
-And to bring it all together, Markade uses **Jade**; an elegant way to write
+And to bring it all together, Markade uses **Pug**; an elegant way to write
 HTML in a very easy and clean way. It has a lot of advanced features like 
 template inheritance, includes, mixins and much more!
 
@@ -54,7 +54,7 @@ I was working on a [website](http://avalon-rpg.com/) for a client at the time an
 to make the content editable easily by non-tech-aware editors. The content had
 to be stored locally as a file as well.
 
-So looking around, and being already familiar with both Markdown and Jade I
+So looking around, and being already familiar with both Markdown and Pug I
 came upon an implementation of Markdown that combined YAML with the seperation
 of both by two `---` lines.
 

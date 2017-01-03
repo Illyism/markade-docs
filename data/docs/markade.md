@@ -1,5 +1,5 @@
 ---
-template: docs/index.jade
+template: docs/index.pug
 page: docs/markade
 title: Markade
 description: The tool in three commands.
@@ -38,8 +38,8 @@ You can then watch and run a local server to view the files with `markade watch 
 
 1. (Optional) Move into your directory.
 2. To compile, run `markade compile <directory>`. This will look for markade.json you created earlier then look for data files in the data directory you specified and compare them against the templates in the following way:
-  1. A YAML variable `template: file.jade` specified.
-  2. Templates defined in your markade.json in a templates object. `"templates": {"file.jade": "file.md"}`
+  1. A YAML variable `template: file.pug` specified.
+  2. Templates defined in your markade.json in a templates object. `"templates": {"file.pug": "file.md"}`
   3. If none found, it defaults to a file with the same name in the template directory. 
 3. Then it will write the file in the same relative path as your data file in your output directory in the following way:
   1. A YAML variable `output: file.xml` specified.
@@ -60,9 +60,9 @@ The API takes an options object with the following set of options.
 
 ||
 |-|
-| jade | object | Jade options
-| template | string | Source Jade template string
-| options | object | Options for markade and jade
+| pug | object | Pug options
+| template | string | Source Pug template string
+| options | object | Options for markade and pug
 | callback | function | A function to call on error or compilation with `(err, html)` as arguments
 
 ### options.log
@@ -75,9 +75,9 @@ Options for logging to console. Available options include:
 * "log" - Output important information including warnings and errors
 * "info" - Output everything
 
-### options.jade
+### options.pug
 
-Takes all options that the Jade API takes. Here are the most useful ones.
+Takes all options that the Pug API takes. Here are the most useful ones.
 
 ||
 |-|
@@ -86,13 +86,13 @@ Takes all options that the Jade API takes. Here are the most useful ones.
 
 ## markade(data, template, options, callback)
 
-Compile a Jade string with a Markdown string to a HTML string.
+Compile a Pug string with a Markdown string to a HTML string.
 
 ||
 |-|
 | data | string | Markdown stringng
-| template | string | Source Jade template string
-| options | object | Options for Markade and Jade (see [above](#options))
+| template | string | Source Pug template string
+| options | object | Options for Markade and Pug (see [above](#options))
 | callback | function | A function to call on error or compilation
 
 
@@ -106,7 +106,7 @@ var data = "**bold** text";
 var template = "| !{html}";
 
 var options = {
-  jade: {
+  pug: {
     filename: options.template
   }
 };

@@ -1,5 +1,5 @@
 ---
-template: examples.jade
+template: examples.pug
 page: examples
 title: Examples
 description: Example code and real life cases

@@ -1,7 +1,7 @@
 var http = require("https");
 
 var data = {
-  "name": "Markade | Node.js, Jade, YAML and Markdown based Static Site Generator",
+  "name": "Markade | Node.js, Pug, YAML and Markdown based Static Site Generator",
   "directories": {
     "output": "public",
     "template": "templates",
@@ -9,7 +9,7 @@ var data = {
   },
   "version": 0,
   "templates": {
-    "index.jade": [
+    "index.pug": [
       "index.md",
       "second.md"
     ]

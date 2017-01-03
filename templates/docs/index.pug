@@ -9,7 +9,7 @@ block content
       .menu.vertical
         +docsMenu("/docs/markade.html", "docs/markade", "Markade", $.nav)
         +docsMenu("/docs/markdown.html", "docs/markdown", "Content", $.nav)
-        +docsMenu("/docs/jade.html", "docs/jade", "Templates", $.nav)
+        +docsMenu("/docs/pug.html", "docs/pug", "Templates", $.nav)
         +docsMenu("/docs/yaml.html", "docs/yaml", "Data", $.nav)
 
 
@@ -20,10 +20,10 @@ append script
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
   script.
     $(document).ready(function() {
-      $('.terminal.group .jade.shell').each(function(i, block) {
+      $('.terminal.group .pug.shell').each(function(i, block) {
         var first = block.children[0];
         var second = block.children[1];
-        first.className = "jade";
+        first.className = "pug";
         second.className = "html";
       });
       $('pre code').each(function(i, block) {

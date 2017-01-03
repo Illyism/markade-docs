@@ -4,7 +4,7 @@ title: A static site generator that stands on the shoulders of giants.
 
 headerBlocks:
   - title: Robust
-    description: Working with true and tested technologies - no more reinventing the wheel, just Jade templates powered by YAML and Markdown.
+    description: Working with true and tested technologies - no more reinventing the wheel, just Pug templates powered by YAML and Markdown.
     link:
       title: How Markade is made →
       url: /about/

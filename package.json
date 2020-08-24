@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "markade watch",
+    "build": "markade compile"
+  },
+  "dependencies": {
+    "markade": "^1.0.1"
+  }
+}
